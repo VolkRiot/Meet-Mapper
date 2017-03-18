@@ -1,4 +1,9 @@
 /* The side navigation menu */
+
+#jumbo {
+    max-height:100px;
+}
+
 .sidenav {
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
@@ -47,3 +52,12 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+/* Media Query */
+
+@media screen and (max-width: 768px) {}
+
+
+@media screen and (max-width: 640px) {}
+
+
