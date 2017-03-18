@@ -7,3 +7,7 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
+
+$("#slideoutNav").on("click", function () {
+	openNav()
+});
