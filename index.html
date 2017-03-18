@@ -7,6 +7,7 @@
 	<!-- Bootstrap Link -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+	<link rel="stylesheet" type="text/css" href="assets/style/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="assets/style/css/style.css">
 
 
@@ -63,6 +64,18 @@
 	
 <!-- Link to  Javascript page.  -->
 <script src="assets/style/javascript/appearance.js" type="text/javascript"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB44880HRpqu8Vd_ax992-mOJg7jmftils",
+    authDomain: "meet-mapper.firebaseapp.com",
+    databaseURL: "https://meet-mapper.firebaseio.com",
+    storageBucket: "meet-mapper.appspot.com",
+    messagingSenderId: "933307040985"
+  };
+  firebase.initializeApp(config);
+</script>
 
 </body>
 </html>
