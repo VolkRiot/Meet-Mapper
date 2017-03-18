@@ -1,3 +1,8 @@
 function yelpConstructor(argument) {
-	// body...
+	return{
+		url:'',
+		test: function(){
+			
+		}
+	};
 }
