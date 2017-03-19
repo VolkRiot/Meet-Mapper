@@ -1,9 +1,10 @@
-/* The side navigation menu */
-
-#jumbo {
-    max-height:100px;
+#header {
+    position:fixed;
+    width:100%;
+    height:100px;
+    background-color: grey;
 }
-
+/* The side navigation menu */
 .sidenav {
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
@@ -41,17 +42,15 @@
     margin-left: 50px;
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-    transition: margin-left .5s;
-    padding: 20px;
+#wrapper {
+    margin-left:20px;
+    margin-right:20px; 
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+#headerText {
+    text-align: center;
 }
+
 
 /* Media Query */
 
@@ -61,3 +60,10 @@
 @media screen and (max-width: 640px) {}
 
 
+/* CSS To Do
+Color Scheme?
+RWD - positioning of elements on Tablets, Phones, etc....
+Fade In Animation
+Positioning of Header - ? follow scrolling user or no?
+if it follows user then needs to have a z-index? so it goes over elements instead of under them?
+*/
