@@ -3,7 +3,10 @@ function GMapInterface(container) {
   this.mapOptions = {
     zoom: 16,
     center: this.startLoc,
-    draggableCursor:'crosshair'
+    draggableCursor:'crosshair',
+    clickableIcons: false,
+    streetViewControl: false,
+    mapTypeControl: false
   };
   this.map;
   this.newMarker;
@@ -13,6 +16,10 @@ function GMapInterface(container) {
 GMapInterface.prototype.initMap = function(contId) {
 
   this.map = new google.maps.Map(document.getElementById(contId), this.mapOptions);
+
+  this.map.addListener('click', function(event) {
+    this.createMarker(event.latLng);
+  });
 
 };
 
@@ -33,17 +40,26 @@ GMapInterface.prototype.createMarker = function(latLong) {
 
 };
 
+GMapInterface.prototype.queryUserLocation = function () {
 
-// Start document here....
+  var self = this;
 
-$(document).ready(function () {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
 
-  var Map = new GMapInterface('map-container');
-  Map.createMarker(Map.startLoc);
+      self.map.setCenter(pos);
 
-  Map.map.addListener('click', function(event) {
+    }, function() {
+      // Failed to find current position
 
-    Map.createMarker(event.latLng);
-  });
+    });
+  } else {
+    // Browser doesn't support Geolocation
 
-});
+  }
+
+};
