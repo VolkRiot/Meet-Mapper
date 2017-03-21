@@ -19,7 +19,6 @@ GMapInterface.prototype.initMap = function(contId) {
 
 };
 
-
 GMapInterface.prototype.createMarker = function(latLong, animate, data) {
 
   var newMarker = new google.maps.Marker({
@@ -69,6 +68,7 @@ GMapInterface.prototype.queryUserLocation = function () {
 
       // Successfully found map
       self.setMapCenter(self.startLoc);
+      self.currentMarker.setMap(null);
       self.currentMarker = self.createMarker(self.startLoc, {bounce: true});
 
     }, function() {

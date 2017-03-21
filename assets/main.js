@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  var newEvent = {};
+  var MarkerData = [];
 
   var Map = new GMapInterface('map-container');
 
@@ -14,11 +14,22 @@ $(document).ready(function () {
 
   });
 
-  $('#add-event-button').on('click', function () {
+  $('#add-event-button').on('click', function (e) {
+
+    e.preventDefault();
+
+    var newMarkerData;
+    var newEvent = {};
+
     newEvent.name = $('#event-name').val().trim();
     newEvent.date = $('#event-date').val().trim();
     newEvent.startTime = $('#event-start').val().trim();
     newEvent.endTime = $('#event-end').val().trim();
+
+
+    Map.currentMarker.setMap(null);
+    newMarker = Map.createMarker(Map.currentMarker.position, {drop: true}, newEvent)
+
   });
 
 });
