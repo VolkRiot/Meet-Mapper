@@ -9,7 +9,7 @@ function GMapInterface(container) {
     mapTypeControl: false
   };
   this.map;
-  this.newMarker;
+  this.currentMarker;
   this.initMap(container);
 }
 
@@ -17,26 +17,27 @@ GMapInterface.prototype.initMap = function(contId) {
 
   this.map = new google.maps.Map(document.getElementById(contId), this.mapOptions);
 
-  this.map.addListener('click', function(event) {
-    this.createMarker(event.latLng);
-  });
-
 };
+
 
 GMapInterface.prototype.createMarker = function(latLong) {
 
-  if(this.newMarker){
-    this.newMarker.setMap(null);
+  if(this.currentMarker){
+    this.currentMarker.setMap(null);
   }
 
-  var marker = new google.maps.Marker({
+  this.currentMarker = new google.maps.Marker({
       position: latLong,
       custom: "Something new can go here"
     });
 
-  this.newMarker = marker;
+  this.currentMarker.setMap(this.map);
 
-  marker.setMap(this.map);
+  this.currentMarker.addListener('click', function(event) {
+
+    alert("Marker is clicked and it is located at " + event.latLng)
+
+  });
 
 };
 
