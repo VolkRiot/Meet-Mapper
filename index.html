@@ -18,15 +18,15 @@
        <div class="col-md-12">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h1>WORKING TITLE</h1>
+              <h1 id="headerText">WORKING TITLE</h1>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" id="searchBody">
               <form>
-                <div class="form-group">
-                  <label for="userSearch">Search by City</label>
+                <div class="col-xs-4">
+                  <label id="searchLabel" for="userSearch">Search by City:</label>
                   <input class="form-control" id="userSearch" type="text">
+                  <button class="btn btn-primary" id="submitSearchBtn" type="submit">Submit</button>
                 </div>
-                <button class="btn btn-primary" id="submitSearch" type="submit">Submit</button>
               </form>
             </div>
           </div>
@@ -59,22 +59,22 @@
               <h3 class="panel-title">Event Form</h3>
             </div>
             <div class="panel-body">
-              <form>
+              <form style="margin: 3px; padding: 3px;">
                 <div class="form-group">
-                  <label for="userSearch">Event Name</label>
-                  <input class="form-control" id="userAddName" type="text">
-                  <label for="userSearch">Location</label>
-                  <input class="form-control" id="userAddLoc" type="text">
-                  <label for="userSearch">Date</label>
-                  <input class="form-control" id="userAddDate" type="date">
-                  <label for="userSearch">Start Time</label>
-                  <input class="form-control" id="userAddStart" type="time">
-                  <label for="userSearch">End Time</label>
-                  <input class="form-control" id="userAddEnd" type="time">
-				  <label for="userSearch">Description</label>
-                  <input class="form-control" id="userAddDescription" type="text">		   
+                  <label for="userSearch">Event Name:</label>
+                  <input class="form-inline" id="userAddName" type="text">
+                  <label>Location:</label>
+                  <input class="form-inline" id="userAddLoc" type="text">
+                  <label>Date:</label>
+                  <input class="form-inline" id="userAddDate" type="date">
+                  <label>Start Time:</label>
+                  <input class="form-inline" id="userAddStart" type="time">
+                  <label>End Time:</label>
+                  <input class="form-inline" id="userAddEnd" type="time"><hr>
+				  <label>Description:</label>
+                  <input class="form-control" id="userAddDescription" type="text">	 
                 </div>
-                <button class="btn btn-primary" id="addEvent" type="submit">Submit</button>
+                <button class="btn btn-primary" id="addEventBtn" type="submit">Submit</button>
               </form>
             </div>
           </div>
