@@ -1,14 +1,24 @@
 $(document).ready(function () {
 
+  var newEvent = {};
+
   var Map = new GMapInterface('map-container');
 
   Map.queryUserLocation();
-  Map.createMarker(Map.startLoc, {bounce: true});
+  Map.currentMarker = Map.createMarker(Map.startLoc, {bounce: true});
 
   Map.map.addListener('click', function(event) {
 
-    Map.createMarker(event.latLng, {bounce: true});
+    Map.currentMarker.setMap(null);
+    Map.currentMarker = Map.createMarker(event.latLng, {bounce: true});
 
+  });
+
+  $('#add-event-button').on('click', function () {
+    newEvent.name = $('#event-name').val().trim();
+    newEvent.date = $('#event-date').val().trim();
+    newEvent.startTime = $('#event-start').val().trim();
+    newEvent.endTime = $('#event-end').val().trim();
   });
 
 });
