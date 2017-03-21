@@ -20,7 +20,7 @@ GMapInterface.prototype.initMap = function(contId) {
 };
 
 
-GMapInterface.prototype.createMarker = function(latLong) {
+GMapInterface.prototype.createMarker = function(latLong, animate) {
 
   if(this.currentMarker){
     this.currentMarker.setMap(null);
@@ -30,6 +30,14 @@ GMapInterface.prototype.createMarker = function(latLong) {
       position: latLong,
       custom: "Something new can go here"
     });
+
+  if(animate.drop){
+    this.currentMarker.setAnimation(google.maps.Animation.DROP);
+  }
+
+  if(animate.bounce){
+    this.currentMarker.setAnimation(google.maps.Animation.BOUNCE);
+  }
 
   this.currentMarker.setMap(this.map);
 
@@ -47,21 +55,33 @@ GMapInterface.prototype.queryUserLocation = function () {
   var self = this;
 
   if (navigator.geolocation) {
+
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
+      self.startLoc = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
 
-      self.map.setCenter(pos);
+      self.setMapCenter(self.startLoc);
+      self.createMarker(self.startLoc, {bounce: true});
 
     }, function() {
+
       // Failed to find current position
+      self.startLoc = {lat: 37.7919221, lng: -122.393739};
+      self.setMapCenter(this.startLoc);
+      self.createMarker(self.startLoc, {bounce: true});
 
-    });
-  } else {
-    // Browser doesn't support Geolocation
-
+    }, {timeout:7000});
   }
+
+  // self.setMapCenter(this.startLoc);
+  // self.createMarker(self.startLoc, {bounce: true});
+
+};
+
+GMapInterface.prototype.setMapCenter = function (position) {
+
+  this.map.setCenter(position);
 
 };

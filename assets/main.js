@@ -1,13 +1,13 @@
 $(document).ready(function () {
 
   var Map = new GMapInterface('map-container');
-  Map.createMarker(Map.startLoc);
+
   Map.queryUserLocation();
+  Map.createMarker(Map.startLoc, {bounce: true});
 
   Map.map.addListener('click', function(event) {
 
-    Map.createMarker(event.latLng);
-    Map.currentMarker.setAnimation(google.maps.Animation.BOUNCE);
+    Map.createMarker(event.latLng, {bounce: true});
 
   });
 
