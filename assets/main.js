@@ -1,7 +1,3 @@
-//TODO: (DEVELOPER) Remove this debugging global
-var GlobalObj;
-////////////////////////////////////////////////////////////
-
 $(document).ready(function () {
 
   var Map = new GMapInterface('map-container');
@@ -11,6 +7,7 @@ $(document).ready(function () {
   Map.map.addListener('click', function(event) {
 
     Map.createMarker(event.latLng);
+    Map.currentMarker.setAnimation(google.maps.Animation.BOUNCE);
 
   });
 

@@ -35,6 +35,7 @@ GMapInterface.prototype.createMarker = function(latLong) {
 
   this.currentMarker.addListener('click', function(event) {
 
+    // What we want to happen on a marker click can go here.
     alert("Marker is clicked and it is located at " + event.latLng)
 
   });
