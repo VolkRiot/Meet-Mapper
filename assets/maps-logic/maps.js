@@ -62,15 +62,21 @@ GMapInterface.prototype.queryUserLocation = function () {
         lng: position.coords.longitude
       };
 
+      self.setMapCenter(self.startLoc);
+      self.createMarker(self.startLoc, {bounce: true});
+
     }, function() {
 
       // Failed to find current position
       self.startLoc = {lat: 37.7919221, lng: -122.393739};
+      self.setMapCenter(this.startLoc);
+      self.createMarker(self.startLoc, {bounce: true});
 
     }, {timeout:7000});
   }
 
-  self.setMapCenter(this.startLoc)
+  // self.setMapCenter(this.startLoc);
+  // self.createMarker(self.startLoc, {bounce: true});
 
 };
 

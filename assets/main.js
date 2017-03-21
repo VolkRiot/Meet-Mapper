@@ -7,7 +7,7 @@ $(document).ready(function () {
 
   Map.map.addListener('click', function(event) {
 
-    Map.createMarker(event.latLng, true);
+    Map.createMarker(event.latLng, {bounce: true});
 
   });
 
