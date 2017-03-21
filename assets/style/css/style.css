@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #header {
     position:fixed;
     width:100%;
@@ -49,6 +50,11 @@
 
 #headerText {
     text-align: center;
+=======
+#map-container{
+    height: 300px;
+    width: 100%;
+>>>>>>> b0094d6a1078101b279a284030f94f72ec41777b
 }
 
 
