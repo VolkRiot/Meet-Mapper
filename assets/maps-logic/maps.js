@@ -19,11 +19,12 @@ GMapInterface.prototype.initMap = function(contId) {
 
 };
 
-GMapInterface.prototype.createMarker = function(latLong, animate, data) {
+GMapInterface.prototype.createMarker = function(latLong, animate, data, icon) {
 
   var newMarker = new google.maps.Marker({
       position: latLong,
       animate: animate,
+      icon: icon,
       data: data,
       custom: "You are here"
     });

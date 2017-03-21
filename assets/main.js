@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+  var markerIcons = {
+    green: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+  };
+
   var MarkerData = [];
 
   var Map = new GMapInterface('map-container');
@@ -28,7 +32,7 @@ $(document).ready(function () {
 
 
     Map.currentMarker.setMap(null);
-    newMarker = Map.createMarker(Map.currentMarker.position, {drop: true}, newEvent)
+    newMarker = Map.createMarker(Map.currentMarker.position, {drop: true}, newEvent, markerIcons.green)
 
   });
 
