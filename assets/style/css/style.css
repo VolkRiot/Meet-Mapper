@@ -43,18 +43,15 @@
     margin-left: 50px;
 }
 
-#wrapper {
-    margin-left:20px;
-    margin-right:20px; 
-}
 
 #headerText {
     text-align: center;
-=======
+}
+
 #map-container{
     height: 300px;
     width: 100%;
->>>>>>> b0094d6a1078101b279a284030f94f72ec41777b
+
 }
 
 
