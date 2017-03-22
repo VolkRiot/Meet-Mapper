@@ -19,36 +19,42 @@ GMapInterface.prototype.initMap = function(contId) {
 
 };
 
+GMapInterface.prototype.createMarker = function(latLong, animate, data, icon) {
 
-GMapInterface.prototype.createMarker = function(latLong, animate) {
-
-  if(this.currentMarker){
-    this.currentMarker.setMap(null);
-  }
-
-  this.currentMarker = new google.maps.Marker({
+  var newMarker = new google.maps.Marker({
       position: latLong,
-      custom: "Something new can go here"
+      animate: animate,
+      icon: icon,
+      data: data,
+      custom: "You are here"
     });
 
+  if(data){
+    newMarker.custom = data;
+  }
+
   if(animate.drop){
-    this.currentMarker.setAnimation(google.maps.Animation.DROP);
+    newMarker.setAnimation(google.maps.Animation.DROP);
   }
 
   if(animate.bounce){
-    this.currentMarker.setAnimation(google.maps.Animation.BOUNCE);
+    newMarker.setAnimation(google.maps.Animation.BOUNCE);
   }
 
-  this.currentMarker.setMap(this.map);
+  newMarker.setMap(this.map);
 
-  this.currentMarker.addListener('click', function(event) {
+  newMarker.addListener('click', function(event) {
 
     // What we want to happen on a marker click can go here.
-    alert("Marker is clicked and it is located at " + event.latLng)
+    alert("Marker is clicked and it is located at " + event.latLng);
+    console.log("This marker has attributes " + newMarker.data.name);
 
   });
 
+  return newMarker;
+
 };
+
 
 GMapInterface.prototype.queryUserLocation = function () {
 
@@ -62,21 +68,20 @@ GMapInterface.prototype.queryUserLocation = function () {
         lng: position.coords.longitude
       };
 
+      // Successfully found map
       self.setMapCenter(self.startLoc);
-      self.createMarker(self.startLoc, {bounce: true});
+      self.currentMarker.setMap(null);
+      self.currentMarker = self.createMarker(self.startLoc, {bounce: true});
 
     }, function() {
 
       // Failed to find current position
-      self.startLoc = {lat: 37.7919221, lng: -122.393739};
-      self.setMapCenter(this.startLoc);
-      self.createMarker(self.startLoc, {bounce: true});
+      // self.startLoc = {lat: 37.7919221, lng: -122.393739};
+      // self.setMapCenter(this.startLoc);
+      // self.currentMarker = self.createMarker(self.startLoc, {bounce: true});
 
     }, {timeout:7000});
   }
-
-  // self.setMapCenter(this.startLoc);
-  // self.createMarker(self.startLoc, {bounce: true});
 
 };
 
