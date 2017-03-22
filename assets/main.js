@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
   var markerIcons = {
-    green: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+    green: 'http://maps.google.com/mapfiles/ms/icons/grn-pushpin.png'
   };
-
   var MarkerData = [];
+
 
   var Map = new GMapInterface('map-container');
 

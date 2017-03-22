@@ -46,7 +46,8 @@ GMapInterface.prototype.createMarker = function(latLong, animate, data, icon) {
   newMarker.addListener('click', function(event) {
 
     // What we want to happen on a marker click can go here.
-    alert("Marker is clicked and it is located at " + event.latLng)
+    alert("Marker is clicked and it is located at " + event.latLng);
+    console.log("This marker has attributes " + newMarker.data.name);
 
   });
 
@@ -75,9 +76,9 @@ GMapInterface.prototype.queryUserLocation = function () {
     }, function() {
 
       // Failed to find current position
-      self.startLoc = {lat: 37.7919221, lng: -122.393739};
-      self.setMapCenter(this.startLoc);
-      self.currentMarker = self.createMarker(self.startLoc, {bounce: true});
+      // self.startLoc = {lat: 37.7919221, lng: -122.393739};
+      // self.setMapCenter(this.startLoc);
+      // self.currentMarker = self.createMarker(self.startLoc, {bounce: true});
 
     }, {timeout:7000});
   }
