@@ -36,4 +36,13 @@ $(document).ready(function () {
 
   });
 
+  $('#location-search').on('click', function (e) {
+
+    e.preventDefault();
+
+
+
+
+  })
+
 });
