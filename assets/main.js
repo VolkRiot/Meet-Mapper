@@ -1,3 +1,8 @@
+// Search result
+var searchResult = [];
+//////////////////////
+
+
 $(document).ready(function () {
 
   var Map = new GMapInterface('map-container');
@@ -7,8 +12,22 @@ $(document).ready(function () {
 
   Map.map.addListener('click', function(event) {
 
-    Map.createMarker(event.latLng, {bounce: true});
+    Map.createMarker(event.latLng, {bounce: true}); 	
+
+  });
+
+  // Search Input Click Event
+  $('#submitSearchBtn').on('click', function(e){
+  	e.preventDefault();
+
+  	var input = $('#userSearch').val().trim();
+  	
+  	var Places = new placesInit(Map);
+
+  	// Saiving result in a Global variable for test
+  	searchResult = Places.search(input);
 
   });
 
 });
+
