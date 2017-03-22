@@ -42,20 +42,29 @@ $(document).ready(function () {
 
   });
 
-  database.ref("events").once('value', function (snapshot) {
 
+  // Search Input Click Event
+  $('#submitSearchBtn').on('click', function(e){
+    e.preventDefault();
+
+    var input = $('#location-search').val().trim();
+    
+    var Places = new placesInit(Map);
+
+    // Saiving result in a Global variable for test
+    searchResult = Places.search(input);
+
+  });
+  ////////////////////////////////////////////////////
+
+  database.ref("events").once('value', function (snapshot) {
     if(snapshot.val()){
       markerDataArray = snapshot.val();
 
       markerDataArray.forEach(function (elem) {
-
         Map.setMarker(Map.createMarker(elem.location, {drop: true}, elem, markerIcons.green));
-
       });
-
     }
-
   });
-
 
 });
