@@ -9,11 +9,14 @@ $(document).ready(function () {
 
   Map.queryUserLocation();
   Map.currentMarker = Map.createMarker(Map.startLoc, {bounce: true});
+  Map.currentMarker.setMap(null);
+  Map.setMarker(Map.currentMarker);
 
   Map.map.addListener('click', function(event) {
 
     Map.currentMarker.setMap(null);
     Map.currentMarker = Map.createMarker(event.latLng, {bounce: true});
+    Map.setMarker(Map.currentMarker);
 
   });
 
@@ -31,7 +34,7 @@ $(document).ready(function () {
 
 
     Map.currentMarker.setMap(null);
-    newMarker = Map.createMarker(Map.currentMarker.position, {drop: true}, newMarkerData, markerIcons.green);
+    Map.setMarker(Map.createMarker(Map.currentMarker.position, {drop: true}, newMarkerData, markerIcons.green));
 
     markerDataArray.push(newMarkerData);
 

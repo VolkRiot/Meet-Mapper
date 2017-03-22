@@ -41,7 +41,7 @@ GMapInterface.prototype.createMarker = function(latLong, animate, data, icon) {
     newMarker.setAnimation(google.maps.Animation.BOUNCE);
   }
 
-  newMarker.setMap(this.map);
+  //newMarker.setMap(this.map);
 
   newMarker.addListener('click', function(event) {
 
@@ -52,6 +52,12 @@ GMapInterface.prototype.createMarker = function(latLong, animate, data, icon) {
   });
 
   return newMarker;
+
+};
+
+GMapInterface.prototype.setMarker = function(marker) {
+
+  marker.setMap(this.map);
 
 };
 
@@ -72,13 +78,12 @@ GMapInterface.prototype.queryUserLocation = function () {
       self.setMapCenter(self.startLoc);
       self.currentMarker.setMap(null);
       self.currentMarker = self.createMarker(self.startLoc, {bounce: true});
+      self.setMarker(self.currentMarker);
 
     }, function() {
 
-      // Failed to find current position
-      // self.startLoc = {lat: 37.7919221, lng: -122.393739};
-      // self.setMapCenter(this.startLoc);
-      // self.currentMarker = self.createMarker(self.startLoc, {bounce: true});
+      // TODO: Add a slide out saying location could not be located
+
 
     }, {timeout:7000});
   }
