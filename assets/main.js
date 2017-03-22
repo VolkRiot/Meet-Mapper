@@ -42,10 +42,17 @@ $(document).ready(function () {
 
   });
 
-  database.ref("events").on('value', function (snapshot) {
+  database.ref("events").once('value', function (snapshot) {
 
     if(snapshot.val()){
       markerDataArray = snapshot.val();
+
+      markerDataArray.forEach(function (elem) {
+
+        Map.setMarker(Map.createMarker(elem.location, {drop: true}, elem, markerIcons.green));
+
+      });
+
     }
 
   });
