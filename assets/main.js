@@ -1,11 +1,10 @@
 $(document).ready(function () {
 
+  var database = firebase.database();
   var markerIcons = {
     green: 'http://maps.google.com/mapfiles/ms/icons/grn-pushpin.png'
   };
-  var MarkerData = [];
-
-
+  var markerDataArray = [];
   var Map = new GMapInterface('map-container');
 
   Map.queryUserLocation();
@@ -22,27 +21,31 @@ $(document).ready(function () {
 
     e.preventDefault();
 
-    var newMarkerData;
-    var newEvent = {};
+    var newMarkerData = {};
 
-    newEvent.name = $('#event-name').val().trim();
-    newEvent.date = $('#event-date').val().trim();
-    newEvent.startTime = $('#event-start').val().trim();
-    newEvent.endTime = $('#event-end').val().trim();
+    newMarkerData.name = $('#event-name').val().trim();
+    newMarkerData.date = $('#event-date').val().trim();
+    newMarkerData.startTime = $('#event-start').val().trim();
+    newMarkerData.endTime = $('#event-end').val().trim();
+    newMarkerData.location = {lat: Map.currentMarker.position.lat(), lng: Map.currentMarker.position.lng()};
 
 
     Map.currentMarker.setMap(null);
-    newMarker = Map.createMarker(Map.currentMarker.position, {drop: true}, newEvent, markerIcons.green)
+    newMarker = Map.createMarker(Map.currentMarker.position, {drop: true}, newMarkerData, markerIcons.green);
+
+    markerDataArray.push(newMarkerData);
+
+    database.ref("events").set(markerDataArray);
 
   });
 
-  $('#location-search').on('click', function (e) {
+  database.ref("events").on('value', function (snapshot) {
 
-    e.preventDefault();
+    if(snapshot.val()){
+      markerDataArray = snapshot.val();
+    }
 
+  });
 
-
-
-  })
 
 });
