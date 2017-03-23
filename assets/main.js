@@ -44,15 +44,16 @@ $(document).ready(function () {
 
 
   // Search Input Click Event
-  $('#submitSearchBtn').on('click', function(e){
+  $('#search-submit').on('click', function(e){
     e.preventDefault();
 
     var input = $('#location-search').val().trim();
     
-    var Places = new placesInit(Map);
-
-    // Saiving result in a Global variable for test
-    searchResult = Places.search(input);
+    if(input !== ""){
+      var places = new PlacesInit(Map);
+      // Console.log result of search 
+      places.search(input);
+    }
 
   });
   ////////////////////////////////////////////////////
