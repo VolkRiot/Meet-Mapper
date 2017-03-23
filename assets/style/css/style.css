@@ -9,8 +9,14 @@
     border-color:black; 
 }
 
+#add-eventform {
+	display:none;
+}
 
 
+#upcoming-events {
+	display:none;
+}
 
 
 /* Media Query */
