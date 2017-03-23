@@ -1,126 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>UCB Group Project</title>
+	<title>Mapski</title>
 	<meta charset="utf-8">
 
   <link rel="stylesheet" type="text/css" href="assets/style/css/reset.css">
-  <!-- Bootstrap Link -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Materialize Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
   <!-- Project stylesheet-->
   <link rel="stylesheet" type="text/css" href="assets/style/css/style.css">
-
-  <!--Import Google Icon Font-->
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+  <link rel="stylesheet" type="text/css" href="assets/style/css/materialize.clockpicker.css">
 
 </head>
 <body>
 
 
-    <div class="row">
-       <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-heading" id="headerheader">
-              <h1 id="headerText">Meethere</h1>
-            </div>
-            <div class="panel-body" id="searchBody">
-              <form>
-                <div class="col-xs-4">
-                  <label id="searchLabel" for="userSearch">Search by City:</label>
-                  <input class="form-control" id="userSearch" type="text">
-                  <button class="btn btn-primary" id="submitSearchBtn" type="submit">Submit</button>
+        <div class="row">
+         <div class="col s12">
+              <form class="col s12">
+               <h5 id="header-text">Mapski</h5>
+                <div class="col s4">
+                  <label id="search-label" for="location-search">Search by City:</label>
+                  <input class="form-control" id="location-search" type="text">
+                  <button class="waves-effect waves-light btn" type="submit" id="search-submit">Submit</button>
                 </div>
-              </form>
-            </div>
+               </form>
           </div>
         </div>
-	</div>
+     
 
 
 <div class="container">
 
 
   <div class="row center-block">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <div class="col s1"></div>
+    <div class="col s10">
 
 
-      <div id="map-container">
+     <div id="map-container">
         <!--Map will go here.-->
+      </div>
+    
+      <div class="row">
+        <div class="col s6">
+          <button class="waves-effect waves-light btn" type="submit" id="add-popout">Add an Event</button>
+        </div>
+        <div class="col s6">
+           <button class="waves-effect waves-light btn" type="submit" id="upcoming-popout">Upcoming Events</button>
+        </div>
       </div>
 
     </div>
-    <div class="col-md-1"></div>
+    <div class="col s1">
+    </div>
   </div>
 
 
-    <div class="row">
-       <div class="col-md-12" id="midtext">
-       <h3>Drop a Pin, then Fill Out the Form Below to Add an Event</h3>
-          <div class="panel panel-default">
-            <div class="panel-heading" id = "panel">
-              <h3 class="panel-title" id = "event">Event Form</h3>
-            </div>
-            <div class="panel-body">
-              <form style="margin: 3px; padding: 3px;">
-                <div class="form-group">
-                  <label for="userSearch">Event Name:</label>
-                  <input class="form-inline" id="userAddName" type="text">
-                  <label>Location:</label>
-                  <input class="form-inline" id="userAddLoc" type="text">
-                  <label>Date:</label>
-                  <input class="form-inline" id="userAddDate" type="date">
-                  <label>Start Time:</label>
-                  <input class="form-inline" id="userAddStart" type="time">
-                  <label>End Time:</label>
-                  <input class="form-inline" id="userAddEnd" type="time"><hr>
-				  <label>Description:</label>
-                  <input class="form-control" id="userAddDescription" type="text">	 
-                </div>
-                <button class="btn btn-primary" id="addEventBtn" type="submit">Submit</button>
-              </form>
-            </div>
+  
+   <div class="row" id="add-eventform">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s4">
+            <input id="event-name" type="text">
+            <label for="event-name">Event Name:</label>
+          </div>
+          <div class="input-field col s4">
+            <input id="event-loc" type="text">
+            <label for="event-loc">Location:</label>
+          </div>
+          <div class="input-field col s4">
+            <input type="date" id="event-date" class="datepicker">
+            <label for="event-date">Date:</label>
           </div>
         </div>
-	</div>
 
-  <!--Import jQuery before materialize.js-->
-     
-      <script type="text/javascript" src="js/materialize.min.js"></script>
- 
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="event-start" type="time" class="timepicker">
+            <label type="time" class="timepicker" for="event-start">Start Time:</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="event-end" type="time" class="timepicker">
+            <label for="event-end">End Time:</label>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="event-description" class="materialize-textarea"></textarea>
+            <label for=""event-description">Description:</label>
+          </div>
+        </div>
+      <button class="waves-effect waves-light btn" type="submit" id="add-event-button">Submit</button>
+      </form>
+    </div>
+
+
+  <table class="highlight" id="upcoming-events">
+        <thead>
+          <tr>
+              <th>Event Name:</th>
+              <th>Location:</th>
+              <th>Date:</th>
+              <th>Start Time:</th>
+              <th>End Time:</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Test</td>
+            <td>Hello There</td>
+            <td>Mapski</td>
+            <td>Mapski</td>
+            <td>Mapski</td>
+          </tr>
+          <tr>
+            <td>Test</td>
+            <td>Hello There</td>
+            <td>Mapski</td>
+            <td>Mapski</td>
+            <td>Mapski</td>
+          </tr>
+        </tbody>
+      </table>
 
 <!-- JQuery Link -->
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 	
 <!-- JQuery UI Link -->
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+
+<!-- Materialize JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 	
 <!-- Link to  Javascript page.  -->
 <script src="assets/style/javascript/appearance.js" type="text/javascript"></script>
+<script src="assets/style/javascript/materialize.clockpicker.js" type="text/javascript"></script>
 <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+
+<!--Places API-->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxmXv9vSqc9JDpNZQ-8L8O2aPAnhy6aRI&libraries=places">
+</script>
+<script src="assets/places-logic/places.js"></script>
+<!--End Places API-->
+
+
+
   <!--Maps API Object-->
   <script src="assets/maps-logic/maps.js"></script>
-  <!--Yelp API Object-->
-  <script
-    async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxmXv9vSqc9JDpNZQ-8L8O2aPAnhy6aRI&libraries=places">
-  </script>
+  <script src="config.js"></script>
   <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
-<script src="config.js">
-  // Initialize Firebase
-  var config = {
+  <script>
+  var firebaseConfig = {
     apiKey: keys.api_key,
     authDomain: "meet-mapper.firebaseapp.com",
     databaseURL: "https://meet-mapper.firebaseio.com",
     storageBucket: "meet-mapper.appspot.com",
     messagingSenderId: "933307040985"
   };
-  firebase.initializeApp(config);
+  firebase.initializeApp(firebaseConfig);
 </script>
 <!--Main program run logic-->
   <script src="assets/main.js"></script>

@@ -2,4 +2,3 @@
 Derek
 Flavio
 Misha
-Sarah

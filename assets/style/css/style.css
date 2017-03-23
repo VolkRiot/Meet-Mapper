@@ -1,103 +1,23 @@
-#header {
-    position:fixed;
-    width:100%;
-    height:50px;
-    background-color: black;
-
-}
-
-#panel-heading {
-background-color: #ee6e73;
-
-}
-
-#headerheader {
-
-    background-color: #ee6e73;
-}
-
-#headerText {
-    text-align:center;
-    color: #fff;
-    background-color: #ee6e73;
-    width: 100%;
-    height: 60px;
-}
-
 
 #map-container{
     height: 300px;
     width: 100%;
     margin-top:20px; 
     margin-bottom:20px;
-    padding: 24px;
-    margin: .5rem 0 1rem 0;
-   
-    border-radius: 2px;
-    background-color: #fff;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-}
-
-
-#userAddDescription {
-    height: 200px;
-}
-
-#submitSearchBtn{
-position:relative;
-left:790px;
-bottom:34px;
-background-color: #2bbbad;
-}
-
-#addEventBtn {
-position:relative;
-background-color: #2bbbad;
-left:1025px;
-
-}
-
-#userSearch {
-position:relative;
-left:360px; 
-}
-
-#panel {
-
-     background-color: #ee6e73;
-}
-
-#event {
-
-  color: #fff;
-    background-color: #ee6e73;
-
-}
-
-#searchLabel {
-    position: relative;
-    left:360px;
-    color: #ee6e73;
-
-
-}
-
-#midtext{
-color: #ee6e73;
-
-
-
-}
-
-#searchBody {
-    max-height:100px;
-}
-
-#map-container {
     border:5px;
     border-style:solid;
-     border-color:black;
+    border-color:black; 
 }
+
+#add-eventform {
+	display:none;
+}
+
+
+#upcoming-events {
+	display:none;
+}
+
 
 /* Media Query */
 
