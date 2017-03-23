@@ -17,15 +17,20 @@ $(function() {
 
 
 $("#add-popout").on("click", function() {
+
 	$("#upcoming-events").hide()
-	$("#add-eventform").show()
+	$("#add-eventform").fadeIn(1000)
+
 
 });
 
 $("#upcoming-popout").on("click", function() {
+
 	$("#add-eventform").hide()
-	$("#upcoming-events").show()
+	$("#upcoming-events").fadeIn(1000)
+  
 
 });
+
 
 
