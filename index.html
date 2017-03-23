@@ -5,90 +5,98 @@
 	<meta charset="utf-8">
 
   <link rel="stylesheet" type="text/css" href="assets/style/css/reset.css">
-  <!-- Bootstrap Link -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Materialize Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
   <!-- Project stylesheet-->
   <link rel="stylesheet" type="text/css" href="assets/style/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/style/css/materialize.clockpicker.css">
 
 </head>
 <body>
 
 
-    <div class="row">
-       <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h1 id="headerText">Mapski</h1>
-            </div>
-            <div class="panel-body" id="searchBody">
-              <form>
-                <div class="col-xs-4">
-                  <label id="searchLabel" for="location-search">Search by City:</label>
+        <div class="row">
+         <div class="col s12">
+              <form class="col s12">
+               <h5 id="header-text">Mapski</h5>
+                <div class="col s4">
+                  <label id="search-label" for="location-search">Search by City:</label>
                   <input class="form-control" id="location-search" type="text">
-                  <button class="btn btn-primary" id="submitSearchBtn" type="submit">Submit</button>
+                  <button class="waves-effect waves-light btn" type="submit" id="search-submit">Submit</button>
                 </div>
-              </form>
-            </div>
+               </form>
           </div>
         </div>
-	</div>
+     
 
 
 <div class="container">
 
 
   <div class="row center-block">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <div class="col s1"></div>
+    <div class="col s10">
 
 
-      <div id="map-container">
+     <div id="map-container">
         <!--Map will go here.-->
       </div>
 
     </div>
-    <div class="col-md-1"></div>
+    <div class="col s1"></div>
   </div>
 
 
-    <div class="row">
-       <div class="col-md-12">
-       <h3>Drop a Pin, then Fill Out the Form Below to Add an Event</h3>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Event Form</h3>
-            </div>
-            <div class="panel-body">
-              <form style="margin: 3px; padding: 3px;">
-                <div class="form-group">
-                  <label for="event-name">Event Name:</label>
-                  <input class="form-inline" id="event-name" type="text">
-                  <label for="event-loc">Location:</label>
-                  <input class="form-inline" id="event-loc" type="text">
-                  <label for="event-date">Date:</label>
-                  <input class="form-inline" id="event-date" type="date">
-                  <label for="event-start">Start Time:</label>
-                  <input class="form-inline" id="event-start" type="time">
-                  <label for="event-end">End Time:</label>
-                  <input class="form-inline" id="event-end" type="time"><hr>
-				  <label for="event-description">Description:</label>
-                  <input class="form-control" id="event-description" type="text">
-                </div>
-                <button class="btn btn-primary" id="add-event-button" type="submit">Submit</button>
-              </form>
-            </div>
+   <div class="row" id="add-eventform">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s4">
+            <input id="event-name" type="text">
+            <label for="event-name">Event Name:</label>
+          </div>
+          <div class="input-field col s4">
+            <input id="event-loc" type="text">
+            <label for="event-loc">Location:</label>
+          </div>
+          <div class="input-field col s4">
+            <input type="date" id="event-date" class="datepicker">
+            <label for="event-date">Date:</label>
           </div>
         </div>
-	</div>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="event-start" type="time" class="timepicker">
+            <label type="time" class="timepicker" for="event-start">Start Time:</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="event-end" type="time" class="timepicker">
+            <label for="event-end">End Time:</label>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="event-description" class="materialize-textarea"></textarea>
+            <label for=""event-description">Description:</label>
+          </div>
+        </div>
+      <button class="waves-effect waves-light btn" type="submit" id="add-event-button">Submit</button>
+      </form>
+    </div>
 
 <!-- JQuery Link -->
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 	
 <!-- JQuery UI Link -->
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+
+<!-- Materialize JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 	
 <!-- Link to  Javascript page.  -->
 <script src="assets/style/javascript/appearance.js" type="text/javascript"></script>
+<script src="assets/style/javascript/materialize.clockpicker.js" type="text/javascript"></script>
 <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
 
 <!--Places API-->
