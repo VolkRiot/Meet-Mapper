@@ -1,14 +1,17 @@
-/* Set the width of the side navigation to 250px Opening Function */
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
+// Datepicker function JS
 
-/* Set the width of the side navigation to 0. Close Function */
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
+$(function() {
+  $('.datepicker').pickadate({
+    selectMonths: true,
+    selectYears: 15
+  });
 
-/* Side Nav Open On Click */
-$("#slideoutNav").on("click", function () {
-	openNav()
+ $('.timepicker').pickatime({
+    autoclose: false,
+    twelvehour: true,
+    default: '14:20:00'
+  });
+
 });
+
+
