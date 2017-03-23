@@ -1,4 +1,3 @@
-
 #map-container{
     height: 300px;
     width: 100%;
@@ -11,8 +10,6 @@
 
 
 
-
-
 /* Media Query */
 
 @media screen and (max-width: 768px) {}
@@ -20,11 +17,3 @@
 
 @media screen and (max-width: 640px) {}
 
-
-/* CSS To Do
-Color Scheme?
-RWD - positioning of elements on Tablets, Phones, etc....
-Fade In Animation
-Positioning of Header - ? follow scrolling user or no?
-if it follows user then needs to have a z-index? so it goes over elements instead of under them?
-*/
