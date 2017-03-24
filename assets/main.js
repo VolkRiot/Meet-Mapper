@@ -56,7 +56,6 @@ $(document).ready(function () {
       // Console.log result of search 
       // stores result in a global variable
       result = places.search(input);
-   
     }
 
   });
