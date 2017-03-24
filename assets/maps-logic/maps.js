@@ -73,7 +73,7 @@ GMapInterface.prototype.queryUserLocation = function () {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-
+  
       // Successfully found map
       self.setMapCenter(self.startLoc);
       self.currentMarker.setMap(null);
@@ -87,7 +87,7 @@ GMapInterface.prototype.queryUserLocation = function () {
 
     }, {timeout:7000});
   }
-
+  return self.startLoc;
 };
 
 GMapInterface.prototype.setMapCenter = function (position) {
