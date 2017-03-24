@@ -58,7 +58,6 @@ $(document).ready(function () {
     }
 
   });
-  ////////////////////////////////////////////////////
 
   database.ref("events").once('value', function (snapshot) {
     if(snapshot.val()){

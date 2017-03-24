@@ -40,7 +40,11 @@ PlacesConstructor.prototype.search = function(searchInput){
   // Function that saves the result in an array
   function getResult(results, status){ 
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-      for (var i = 0; i < 5; i++) {
+      for (var i = 0; i < results.length; i++) {
+
+        if(i == 5 ){
+          break;
+        }
 
         var myObj ={
           name: results[i].name,
