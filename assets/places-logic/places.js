@@ -1,6 +1,6 @@
 //Constructor
 function PlacesConstructor(gMap){
-
+  
   var startPoint;
   var placeService;
   this.PlacesInit(gMap.map);

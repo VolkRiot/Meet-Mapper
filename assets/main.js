@@ -19,6 +19,7 @@ $(document).ready(function () {
     Map.currentMarker.setMap(null);
     Map.currentMarker = Map.createMarker(event.latLng, {bounce: true});
     Map.setMarker(Map.currentMarker);
+    console.log(Map.currentMarker);
 
   });
 
