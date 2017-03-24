@@ -35,8 +35,16 @@
     text-align:center;
 }
 
-#location-search, #location-search {
-    text-align:center;
+
+
+#search-form {
+	margin:0 auto;
+}
+
+
+#search-submit {
+	position: relative;
+	top:20px;
 }
 
 /* Media Query */
