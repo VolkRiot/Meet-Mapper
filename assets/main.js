@@ -1,13 +1,19 @@
-var result;
+// TODO(DEVELOPER): Delete this Debugging var
+var debugResult;
+var Mapdebugger;
+
 
 $(document).ready(function () {
 
   var database = firebase.database();
   var markerIcons = {
-    green: 'http://maps.google.com/mapfiles/ms/icons/grn-pushpin.png'
+    green: 'http://maps.google.com/mapfiles/ms/icons/grn-pushpin.png',
+    purple: 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png'
   };
   var markerDataArray = [];
   var Map = new GMapInterface('map-container');
+
+  Mapdebugger = Map;
 
   Map.queryUserLocation();
   Map.currentMarker = Map.createMarker(Map.startLoc, {bounce: true});
@@ -54,7 +60,15 @@ $(document).ready(function () {
     if(input !== ""){
       var places = new PlacesConstructor(Map); 
       // stores result in a global variable
-      result = places.search(input);
+
+      places.search(input, outputResults);
+
+      function outputResults(resultArray) {
+        resultArray.forEach(function(place) {
+          Map.setMarker(Map.createMarker(place.location, {drop: true}, place, markerIcons.purple));
+        });
+      }
+      
     }
 
   });

@@ -2,7 +2,7 @@ function GMapInterface(container) {
   this.startLoc = {lat: 37.7919221, lng: -122.393739};
   this.mapContainer = container;
   this.mapOptions = {
-    zoom: 16,
+    zoom: 14,
     center: this.startLoc,
     draggableCursor:'crosshair',
     clickableIcons: false,

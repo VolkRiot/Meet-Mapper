@@ -23,7 +23,7 @@ PlacesConstructor.prototype.getPosition = function(myMap){
 };
 
 // Search Function
-PlacesConstructor.prototype.search = function(searchInput){
+PlacesConstructor.prototype.search = function(searchInput, callback){
   // Search obj
   var request = {
     location:  this.startPoint,
@@ -59,8 +59,8 @@ PlacesConstructor.prototype.search = function(searchInput){
 
         searchResult.push(myObj);
       }
+      callback(searchResult);
     }
   }
 
-  return searchResult;
 };
