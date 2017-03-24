@@ -1,38 +1,41 @@
 //Constructor
 function PlacesConstructor(gMap){
-
-  // I need to pass this obj to the request Obj inside search function
-  var startPoint = {
-    lat: gMap.currentMarker.position.lat(),
-    lng: gMap.currentMarker.position.lng()
-  }; 
-  ///////////////////////////////////////////////////////////////////
-
-
-
+  var startPoint;
   var placeService;
- 
-
-
 
   this.PlacesInit(gMap.map);
-  console.log(gMap);
-  console.log(startPoint);
+  this.getPosition(gMap);
 }
 ///////////////////////////////////
+
+
 
 // Initialize places Service
 PlacesConstructor.prototype.PlacesInit = function(myMap){
-  this.placeService = new google.maps.places.PlacesService(myMap);
+	this.placeService = new google.maps.places.PlacesService(myMap);
 }
 ///////////////////////////////////
 
+
+
+// Get Coordinates
+PlacesConstructor.prototype.getPosition = function(myMap){
+
+  var currentPosition = {
+    lat: myMap.currentMarker.position.lat(),
+    lng: myMap.currentMarker.position.lng()
+  };
+  this.startPoint = currentPosition;
+}
+///////////////////////////////////
+
+
+
 // Search Function
 PlacesConstructor.prototype.search = function(searchInput){
-  
   // Search obj
   var request = {
-    location: {lat: 37.6694724, lng: -122.47549339999999}, // obj  from line 5 must to be reveived here
+    location:  this.startPoint,
     radius: '500',
     query: searchInput
   };
@@ -48,14 +51,18 @@ PlacesConstructor.prototype.search = function(searchInput){
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < 5; i++) {
 
+        //////////Formated Obj///////////
         var myObj ={
           name: results[i].name,
+          address: results[i].formatted_address,
+          opening: results[i].opening_hours,
           location: {
             lat: results[i].geometry.location.lat(), 
             lng: results[i].geometry.location.lng()
           },
           photo: results[i].photos[0].html_attributions
         };
+        /////////////////////////////////
         searchResult.push(myObj);
       }
     }
@@ -64,4 +71,5 @@ PlacesConstructor.prototype.search = function(searchInput){
   return searchResult;
 }
 ///////////////////////////////////////////
+
 
