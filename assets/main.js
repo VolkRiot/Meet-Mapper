@@ -70,10 +70,7 @@ $(document).ready(function () {
 
         if(resultArray.length == 1){
 
-          Map.setMapCenter(resultArray[0].location);
-          Map.currentMarker.setMap(null);
-          Map.currentMarker = Map.createMarker(resultArray[0].location, {bounce: true});
-          Map.setMarker(Map.currentMarker);
+          Map.relocateMapMarker(resultArray[0].location);
 
         }else{
 
