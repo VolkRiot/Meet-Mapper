@@ -53,10 +53,8 @@ $(document).ready(function () {
     
     if(input !== ""){
       var places = new PlacesConstructor(Map);
-      // Console.log result of search 
       // stores result in a global variable
       result = places.search(input);
-   
     }
 
   });
