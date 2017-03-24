@@ -10,7 +10,7 @@ $(function() {
  $('.timepicker').pickatime({
     autoclose: false,
     twelvehour: true,
-    default: '14:20:00'
+    default: '12:00:00'
   });
 
 });
