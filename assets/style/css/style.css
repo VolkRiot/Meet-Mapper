@@ -22,9 +22,21 @@
 	text-align:center;
 }
 
-#add-event-button {
-	position:relative;
-	left:829px;
+
+#header {
+    background-color:#4db6ac;
+    max-height:200px;
+    color:#ffffff;
+    padding-bottom:20px;
+    margin-bottom:20px;   
+}
+
+#header-text {
+    text-align:center;
+}
+
+#location-search, #location-search {
+    text-align:center;
 }
 
 /* Media Query */
