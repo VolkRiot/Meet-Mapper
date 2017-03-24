@@ -11,12 +11,10 @@ function PlacesConstructor(gMap){
 
 // Get Coordinates
 PlacesConstructor.prototype.getPosition = function(myMap){
-  var lat = myMap.currentMarker.position.lat();
-  var lng = myMap.currentMarker.position.lng();
-  
+
   var currentPosition = {
-    lat: lat,
-    lng: lng
+    lat: myMap.currentMarker.position.lat(),
+    lng: myMap.currentMarker.position.lng()
   };
   this.startPoint = currentPosition;
 }
