@@ -1,14 +1,11 @@
 //Constructor
 function PlacesConstructor(gMap){
-  
   var startPoint;
   var placeService;
   this.PlacesInit(gMap.map);
   this.getPosition(gMap);
-  
 }
 ///////////////////////////////////
-
 
 
 
@@ -27,13 +24,11 @@ PlacesConstructor.prototype.getPosition = function(myMap){
 
 
 
-
 // Initialize places Service
 PlacesConstructor.prototype.PlacesInit = function(myMap){
   this.placeService = new google.maps.places.PlacesService(myMap);
 }
 ///////////////////////////////////
-
 
 
 
