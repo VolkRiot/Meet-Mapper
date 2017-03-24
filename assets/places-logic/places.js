@@ -6,17 +6,11 @@ function PlacesConstructor(gMap){
   this.PlacesInit(gMap.map);
   this.getPosition(gMap);
 }
-///////////////////////////////////
-
-
 
 // Initialize places Service
 PlacesConstructor.prototype.PlacesInit = function(myMap){
 	this.placeService = new google.maps.places.PlacesService(myMap);
-}
-///////////////////////////////////
-
-
+};
 
 // Get Coordinates
 PlacesConstructor.prototype.getPosition = function(myMap){
@@ -26,10 +20,7 @@ PlacesConstructor.prototype.getPosition = function(myMap){
     lng: myMap.currentMarker.position.lng()
   };
   this.startPoint = currentPosition;
-}
-///////////////////////////////////
-
-
+};
 
 // Search Function
 PlacesConstructor.prototype.search = function(searchInput){
@@ -43,15 +34,14 @@ PlacesConstructor.prototype.search = function(searchInput){
   // Execute search 
   this.placeService.textSearch(request, getResult);
   
-  // Array of awnsers 
+  // Array of answers
   var searchResult = [];
   
-  // Function that saves the result in a array
+  // Function that saves the result in an array
   function getResult(results, status){ 
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < 5; i++) {
 
-        //////////Formated Obj///////////
         var myObj ={
           name: results[i].name,
           address: results[i].formatted_address,
@@ -62,14 +52,11 @@ PlacesConstructor.prototype.search = function(searchInput){
           },
           photo: results[i].photos[0].html_attributions
         };
-        /////////////////////////////////
+
         searchResult.push(myObj);
       }
     }
   }
-  //////return from search function////////
+
   return searchResult;
-}
-///////////////////////////////////////////
-
-
+};
