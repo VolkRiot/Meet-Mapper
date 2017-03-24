@@ -1,3 +1,5 @@
+var result;
+
 $(document).ready(function () {
 
   var database = firebase.database();
@@ -50,9 +52,11 @@ $(document).ready(function () {
     var input = $('#location-search').val().trim();
     
     if(input !== ""){
-      var places = new PlacesInit(Map);
+      var places = new PlacesConstructor(Map);
       // Console.log result of search 
-      places.search(input);
+      // stores result in a global variable
+      result = places.search(input);
+   
     }
 
   });
