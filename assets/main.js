@@ -1,9 +1,3 @@
-// TODO(DEVELOPER): Delete this Debugging var
-var debugResult;
-var Mapdebugger;
-/////////////////////////////////////////
-
-
 $(document).ready(function () {
 
   var database = firebase.database();
@@ -74,11 +68,23 @@ $(document).ready(function () {
           placesMarkersArray = [];
         }
 
-        resultArray.forEach(function(place) {
-          var marker = Map.createMarker(place.location, {drop: true}, place, markerIcons.purple);
-          Map.setMarker(marker);
-          placesMarkersArray.push(marker);
-        });
+        if(resultArray.length == 1){
+
+          Map.setMapCenter(resultArray[0].location);
+          Map.currentMarker.setMap(null);
+          Map.currentMarker = Map.createMarker(resultArray[0].location, {bounce: true});
+          Map.setMarker(Map.currentMarker);
+
+        }else{
+
+          resultArray.forEach(function(place) {
+            var marker = Map.createMarker(place.location, {drop: true}, place, markerIcons.purple);
+            Map.setMarker(marker);
+            placesMarkersArray.push(marker);
+          });
+
+        }
+
       }
       
     }

@@ -1,6 +1,5 @@
 function GMapInterface(container) {
   this.startLoc = {lat: 37.7919221, lng: -122.393739};
-  this.mapContainer = container;
   this.mapOptions = {
     zoom: 14,
     center: this.startLoc,
@@ -46,6 +45,8 @@ GMapInterface.prototype.createMarker = function(latLong, animate, data, icon) {
 
   newMarker.addListener('click', function(event) {
 
+
+    //TODO(DEVELOPER) REPLACE THIS LOG WITH SOMETHING ELSE
     // What we want to happen on a marker click can go here.
     alert("Marker is clicked and it is located at " + event.latLng);
     console.log("This marker has attributes " + newMarker.data.name);
