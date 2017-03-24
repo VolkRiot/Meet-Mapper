@@ -54,7 +54,7 @@ PlacesConstructor.prototype.search = function(searchInput, callback){
             lat: results[i].geometry.location.lat(), 
             lng: results[i].geometry.location.lng()
           },
-          photo: results[i].photos[0].html_attributions
+          photo: results[i].photos
         };
 
         searchResult.push(myObj);

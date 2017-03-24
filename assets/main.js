@@ -1,6 +1,7 @@
 // TODO(DEVELOPER): Delete this Debugging var
 var debugResult;
 var Mapdebugger;
+/////////////////////////////////////////
 
 
 $(document).ready(function () {
@@ -11,6 +12,7 @@ $(document).ready(function () {
     purple: 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png'
   };
   var markerDataArray = [];
+  var placesMarkersArray = [];
   var Map = new GMapInterface('map-container');
 
   Mapdebugger = Map;
@@ -64,8 +66,18 @@ $(document).ready(function () {
       places.search(input, outputResults);
 
       function outputResults(resultArray) {
+
+        if(placesMarkersArray){
+          placesMarkersArray.forEach(function (item) {
+            item.setMap(null);
+          });
+          placesMarkersArray = [];
+        }
+
         resultArray.forEach(function(place) {
-          Map.setMarker(Map.createMarker(place.location, {drop: true}, place, markerIcons.purple));
+          var marker = Map.createMarker(place.location, {drop: true}, place, markerIcons.purple);
+          Map.setMarker(marker);
+          placesMarkersArray.push(marker);
         });
       }
       
