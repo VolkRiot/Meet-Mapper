@@ -16,6 +16,10 @@ $(document).ready(function () {
 
   Map.map.addListener('click', function(event) {
 
+    if(Map.activeSelection){
+      Map.activeSelection.setAnimation(null);
+      Map.activeSelection = null;
+    }
     Map.currentMarker.setMap(null);
     Map.currentMarker = Map.createMarker(event.latLng, {bounce: true});
     Map.setMarker(Map.currentMarker);
@@ -27,6 +31,7 @@ $(document).ready(function () {
     e.preventDefault();
 
     var newMarkerData = {};
+    var formComplete = false;
 
     newMarkerData.name = $('#event-name').val().trim();
     newMarkerData.date = $('#event-date').val().trim();
@@ -34,13 +39,32 @@ $(document).ready(function () {
     newMarkerData.endTime = $('#event-end').val().trim();
     newMarkerData.location = {lat: Map.currentMarker.position.lat(), lng: Map.currentMarker.position.lng()};
 
+    if(newMarkerData.name && newMarkerData.date && newMarkerData.startTime && newMarkerData.endTime){
+      formComplete = true;
+    }else{
+      Materialize.toast('Please complete the form', 3000);
+    }
 
-    Map.currentMarker.setMap(null);
-    Map.setMarker(Map.createMarker(Map.currentMarker.position, {drop: true}, newMarkerData, markerIcons.green));
+    // Check moment JS for date in future
+    var selectedDate = new Date(newMarkerData.date);
 
-    markerDataArray.push(newMarkerData);
+    if(moment().diff(selectedDate) > 0){
 
-    database.ref("events").set(markerDataArray);
+      Materialize.toast('Are you a time-travelers? Because that date has passed', 3000);
+
+    }else if(formComplete){
+
+      $('.event-data').val('');
+
+      Map.currentMarker.setMap(null);
+      Map.setMarker(Map.createMarker(Map.currentMarker.position, {drop: true}, newMarkerData, markerIcons.green));
+
+      markerDataArray.push(newMarkerData);
+
+      database.ref("events").set(markerDataArray);
+
+    }
+
 
   });
 
