@@ -37,7 +37,6 @@ $(document).ready(function () {
     newMarkerData.date = $('#event-date').val().trim();
     newMarkerData.startTime = $('#event-start').val().trim();
     newMarkerData.endTime = $('#event-end').val().trim();
-    //newMarkerData.location = {lat: Map.currentMarker.position.lat(), lng: Map.currentMarker.position.lng()};
 
     if(newMarkerData.name && newMarkerData.date && newMarkerData.startTime && newMarkerData.endTime){
       formComplete = true;
@@ -57,22 +56,13 @@ $(document).ready(function () {
       $('.event-data').val('');
       Map.currentMarker.setMap(null);
 
-      if(Map.activeSelection){
+      if(Map.activeSelection != null){
+        Map.activeSelection.setMap(null);
         newMarkerData.location = Map.activeSelection.data.location;
         newMarkerData.data = Map.activeSelection.data;
       }else{
         newMarkerData.location = {lat: Map.currentMarker.position.lat(), lng: Map.currentMarker.position.lng()};
       }
-
-      var schedMarker = Map.createMarker(newMarkerData.location, {drop: true}, newMarkerData, markerIcons.green);
-
-      schedMarker.addListener('click', function () {
-
-
-
-      });
-
-      Map.setMarker(schedMarker);
 
       markerDataArray.push(newMarkerData);
 
@@ -199,6 +189,39 @@ $(document).ready(function () {
   database.ref("events").on('child_added', function (snapshot) {
 
     // On child_added Events
+
+    var elem = snapshot.val();
+    var marker = Map.createMarker(elem.location, {drop: true}, elem.data, markerIcons.green);
+
+    marker.addListener('mouseover', function () {
+
+      var content;
+
+      if(elem.data){
+        content = '<img border="0" align="Left" src= ' + elem.data.photo + '><br>&nbsp' +  elem.data.name +
+            '<br><br><p>&nbsp' + elem.name + '</p>' +
+            '<p>&nbspAddress: '+ elem.data.address +'</p>' +
+            '<p>&nbspDate: ' + elem.date + '</p>' +
+            '<p style="display:inline">&nbspStart: ' + elem.startTime + '</p><p style="display:inline">&nbspEndTime: ' + elem.endTime + '</p>'
+      }else{
+        content = '<p>&nbsp' + elem.name + '</p>' +
+            '<p>&nbspDate: ' + elem.date + '</p>' +
+            '<p style="display:inline">&nbspStart: ' + elem.startTime + '</p><p style="display:inline">&nbspEndTime: ' + elem.endTime + '</p>'
+      }
+
+      var infowindow = new google.maps.InfoWindow({
+        content: content
+      });
+
+      infowindow.open(Map.map, this);
+
+      marker.addListener('mouseout', function () {
+        infowindow.close();
+      });
+
+    });
+
+    Map.setMarker(marker);
 
   })
 
