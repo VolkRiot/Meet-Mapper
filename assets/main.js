@@ -18,8 +18,8 @@ $(document).ready(function () {
 
   var database = firebase.database();
   var markerIcons = {
-    green: 'http://maps.google.com/mapfiles/ms/icons/grn-pushpin.png',
-    purple: 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png'
+    green: 'https://maps.google.com/mapfiles/ms/icons/grn-pushpin.png',
+    purple: 'https://maps.google.com/mapfiles/ms/icons/purple-dot.png'
   };
   var markerDataArray = [];
   var placesMarkersArray = [];
