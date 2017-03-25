@@ -111,8 +111,16 @@ $(document).ready(function () {
 
             });
 
+            var content;
+
+            if(marker.data.photo){
+              content = '<img border="0" align="Left" src= ' + marker.data.photo + '>&nbsp' +  marker.data.name
+            }else{
+              content = '<img border="0" align="Left">' +  marker.data.name
+            }
+
             var infowindow = new google.maps.InfoWindow({
-              content: '<img border="0" align="Left" src= ' + marker.data.photo + '>&nbsp' +  marker.data.name
+              content: content
             });
 
             marker.addListener('mouseover', function () {
