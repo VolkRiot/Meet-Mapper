@@ -10,6 +10,7 @@ function GMapInterface(container) {
   };
   this.map;
   this.currentMarker;
+  this.activeSelection;
   this.initMap(container);
 }
 
@@ -41,16 +42,6 @@ GMapInterface.prototype.createMarker = function(latLong, animate, data, icon) {
     newMarker.setAnimation(google.maps.Animation.BOUNCE);
   }
 
-  newMarker.addListener('click', function(event) {
-
-
-    //TODO(DEVELOPER) REPLACE THIS LOG WITH SOMETHING ELSE
-    // What we want to happen on a marker click can go here.
-    alert("Marker is clicked and it is located at " + event.latLng);
-    console.log("This marker has attributes " + newMarker.data.name);
-
-  });
-
   return newMarker;
 
 };
@@ -75,7 +66,6 @@ GMapInterface.prototype.queryUserLocation = function () {
       };
 
       // Successfully found map
-
       self.relocateMapMarker(self.startLoc);
 
     }, function() {

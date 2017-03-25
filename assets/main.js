@@ -9,8 +9,6 @@ $(document).ready(function () {
   var placesMarkersArray = [];
   var Map = new GMapInterface('map-container');
 
-  Mapdebugger = Map;
-
   Map.queryUserLocation();
   Map.currentMarker = Map.createMarker(Map.startLoc, {bounce: true});
   Map.currentMarker.setMap(null);
@@ -76,6 +74,31 @@ $(document).ready(function () {
 
           resultArray.forEach(function(place) {
             var marker = Map.createMarker(place.location, {drop: true}, place, markerIcons.purple);
+
+            marker.addListener('click', function() {
+
+              Map.currentMarker.setMap(null);
+
+              if(Map.activeSelection){
+                Map.activeSelection.setAnimation(null);
+              }
+              marker.setAnimation(google.maps.Animation.BOUNCE);
+              Map.activeSelection = marker;
+
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+              content: '<img border="0" align="Left" src= ' + marker.data.photo + '>&nbsp' +  marker.data.name
+            });
+
+            marker.addListener('mouseover', function () {
+              infowindow.open(Map.map, this);
+            });
+
+            marker.addListener('mouseout', function () {
+              infowindow.close();
+            });
+
             Map.setMarker(marker);
             placesMarkersArray.push(marker);
           });

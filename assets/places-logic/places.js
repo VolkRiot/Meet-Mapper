@@ -1,8 +1,5 @@
 //Constructor
 function PlacesConstructor(gMap){
-  var startPoint;
-  var placeService;
-
   this.PlacesInit(gMap.map);
   this.getPosition(gMap);
 }
@@ -49,13 +46,18 @@ PlacesConstructor.prototype.search = function(searchInput, callback){
         var myObj ={
           name: results[i].name,
           address: results[i].formatted_address,
-          opening: results[i].opening_hours,
+          //opening: results[i].opening_hours,
           location: {
             lat: results[i].geometry.location.lat(), 
             lng: results[i].geometry.location.lng()
-          },
-          photo: results[i].photos
+          }
         };
+
+        if(results[i].photos[0]){
+
+          myObj.photo = results[i].photos[0].getUrl({'maxWidth': 50, 'maxHeight': 50});
+
+        }
 
         searchResult.push(myObj);
       }
