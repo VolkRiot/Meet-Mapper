@@ -46,14 +46,13 @@ PlacesConstructor.prototype.search = function(searchInput, callback){
         var myObj ={
           name: results[i].name,
           address: results[i].formatted_address,
-          //opening: results[i].opening_hours,
           location: {
             lat: results[i].geometry.location.lat(), 
             lng: results[i].geometry.location.lng()
           }
         };
 
-        if(results[i].photos[0]){
+        if(results[i].photos){
 
           myObj.photo = results[i].photos[0].getUrl({'maxWidth': 50, 'maxHeight': 50});
 

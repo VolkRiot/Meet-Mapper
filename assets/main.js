@@ -1,3 +1,19 @@
+function buildTableRow(elem) {
+
+  var location;
+
+  elem.data ? location = elem.data.address : location = elem.location.lat + " " + elem.location.lng;
+
+  var row = '<tr><td>' + elem.name + '</td>' +
+      '<td>' + location + '</td>' +
+      '<td>' + elem.date + '</td>' +
+      '<td>' + elem.startTime + '</td>' +
+      '<td>' + elem.endTime + '</td></tr>';
+
+  $('#event-table-body').prepend(row);
+}
+
+
 $(document).ready(function () {
 
   var database = firebase.database();
@@ -77,6 +93,7 @@ $(document).ready(function () {
     e.preventDefault();
 
     var input = $('#location-search').val().trim();
+    $('#location-search').val('');
     
     if(input !== ""){
       var places = new PlacesConstructor(Map); 
@@ -221,8 +238,10 @@ $(document).ready(function () {
 
     });
 
+    buildTableRow(elem);
+
     Map.setMarker(marker);
 
-  })
+  });
 
 });
