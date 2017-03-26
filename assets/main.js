@@ -91,7 +91,7 @@ $(document).ready(function () {
   // Search Input Click Event
   $('#search-submit').on('click', function(e){
     e.preventDefault();
-
+    
     var input = $('#location-search').val().trim();
     $('#location-search').val('');
     

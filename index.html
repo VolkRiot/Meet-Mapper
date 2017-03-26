@@ -49,9 +49,27 @@
     <div class="col s10">
 
 
-     <div id="map-container">
-        <!--Map will go here.-->
-      </div>
+      <section class="container" id="map-transform-container">
+        <div id="card">
+          <figure class="front">
+            <div id="map-container">
+              <!--Map will go here.-->
+            </div>
+          </figure>
+          <figure class="back" id="info-card">
+
+          </figure>
+        </div>
+      </section>
+
+      <!--$("#search-submit").click(function(){-->
+      <!--$("#card").toggleClass("flipped");-->
+      <!--});-->
+
+
+     <!--<div id="map-container">-->
+        <!--&lt;!&ndash;Map will go here.&ndash;&gt;-->
+      <!--</div>-->
     
       <div class="row" id="popout-buttons">
         <div class="col s6">
@@ -85,7 +103,7 @@
         <div class="row">
           <div class="input-field col s6">
             <input id="event-start" type="time" class="timepicker event-data">
-            <label type="time" class="timepicker" for="event-start">Start Time:</label>
+            <label class="timepicker" for="event-start">Start Time:</label>
           </div>
           <div class="input-field col s6">
             <input id="event-end" type="time" class="timepicker event-data">
