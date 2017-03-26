@@ -166,40 +166,6 @@ $(document).ready(function () {
   database.ref("events").once('value', function (snapshot) {
     if(snapshot.val()){
       markerDataArray = snapshot.val();
-
-      markerDataArray.forEach(function (elem) {
-        var marker = Map.createMarker(elem.location, {drop: true}, elem, markerIcons.green);
-        Map.setMarker(marker);
-
-        marker.addListener('mouseover', function () {
-
-          var content;
-
-          if(elem.data){
-            content = '<img border="0" align="Left" src= ' + elem.data.photo + '><br>&nbsp' +  elem.data.name +
-                    '<br><br><p>&nbsp' + elem.name + '</p>' +
-                    '<p>&nbspAddress: '+ elem.data.address +'</p>' +
-                    '<p>&nbspDate: ' + elem.date + '</p>' +
-                    '<p style="display:inline">&nbspStart: ' + elem.startTime + '</p><p style="display:inline">&nbspEndTime: ' + elem.endTime + '</p>'
-          }else{
-            content = '<p>&nbsp' + elem.name + '</p>' +
-                '<p>&nbspDate: ' + elem.date + '</p>' +
-                '<p style="display:inline">&nbspStart: ' + elem.startTime + '</p><p style="display:inline">&nbspEndTime: ' + elem.endTime + '</p>'
-          }
-
-          var infowindow = new google.maps.InfoWindow({
-            content: content
-          });
-
-          infowindow.open(Map.map, this);
-
-          marker.addListener('mouseout', function () {
-            infowindow.close();
-          });
-
-        });
-
-      });
     }
   });
 
