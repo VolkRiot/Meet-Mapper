@@ -13,12 +13,13 @@
   <!-- Project stylesheet-->
   <link rel="stylesheet" type="text/css" href="assets/style/css/style.css">
   <link rel="stylesheet" type="text/css" href="assets/style/css/materialize.clockpicker.css">
+  <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
 
 </head>
 <body>
 
 
-        <div class="row" id="header">
+        <div class="row z-depth-1" id="header">
          <div class="col s12">
            <h3 id="header-text">
             <img src="assets\style\images\location-icon.png" alt="Mapski" style="width:50px; height:50px;">
@@ -35,9 +36,10 @@
 
            <form id="search-form" class="col s12">
             <div class="input-field col s2 offset-s4">
-             <label id="search-label" for="location-search">Search Places:</label>
-             <input class="form-control" id="location-search" type="text">
+             <input class="form-control" placeholder="Search" id="location-search" type="text">
             </div>
+
+             <!--Rework this submit buttons into something better.-->
             <button class="waves-effect waves-light btn" type="submit" id="search-submit">Submit</button>
            </form>
         
@@ -62,9 +64,13 @@
         </div>
       </section>
 
+      <!--Notes for improvements here-->
+
       <!--$("#search-submit").click(function(){-->
       <!--$("#card").toggleClass("flipped");-->
       <!--});-->
+
+      <!--<p class="flow-text">I am Flow Text</p>-->
 
     
       <div class="row" id="popout-buttons">
@@ -109,7 +115,7 @@
         
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="event-description" class="materialize-textarea event-data"></textarea>
+            <textarea id="event-description" class="materialize-textarea event-data" data-length="120"></textarea>
             <label for="event-description">Description:</label>
           </div>
         </div>

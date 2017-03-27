@@ -131,7 +131,7 @@ $(document).ready(function () {
             var content;
 
             if(marker.data.photo){
-              content = '<img border="0" align="Left" src= ' + marker.data.photo + '>&nbsp' +  marker.data.name
+              content = '<img border="0" align="Left" src=' + marker.data.photo + '>&nbsp' +  marker.data.name
             }else{
               content = '<img border="0" align="Left">' +  marker.data.name
             }
@@ -172,7 +172,7 @@ $(document).ready(function () {
       var content;
 
       if(elem.data){
-        content = '<img border="0" align="Left" src= ' + elem.data.photo + '><br>&nbsp' +  elem.data.name +
+        content = '<img border="0" align="Left" src=' + elem.data.photo + '><br>&nbsp' +  elem.data.name +
             '<br><br><p>&nbsp' + elem.name + '</p>' +
             '<p>&nbspAddress: '+ elem.data.address +'</p>' +
             '<p>&nbspDate: ' + elem.date + '</p>' +
