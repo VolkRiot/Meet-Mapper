@@ -13,7 +13,6 @@ function buildTableRow(elem) {
   $('#event-table-body').prepend(row);
 }
 
-
 $(document).ready(function () {
 
   var database = firebase.database();
@@ -23,20 +22,18 @@ $(document).ready(function () {
   };
   var markerDataArray = [];
   var placesMarkersArray = [];
-  var Map = new GMapInterface('map-container');
 
-  Map.queryUserLocation();
-  Map.currentMarker = Map.createMarker(Map.startLoc, {bounce: true});
-  Map.currentMarker.setMap(null);
-  Map.setMarker(Map.currentMarker);
+  var Map = new GMapInterface('map-container');
+  var Places = new PlacesConstructor(Map.map);
 
   Map.map.addListener('click', function(event) {
 
-    if(Map.activeSelection){
-      Map.activeSelection.setAnimation(null);
-      Map.activeSelection = null;
+    if(!Map.currentMarker.data){
+      Map.currentMarker.setMap(null);
+    }else{
+      Map.currentMarker.setAnimation(null);
     }
-    Map.currentMarker.setMap(null);
+
     Map.currentMarker = Map.createMarker(event.latLng, {bounce: true});
     Map.setMarker(Map.currentMarker);
 
@@ -72,14 +69,13 @@ $(document).ready(function () {
       $('.event-data').val('');
       Map.currentMarker.setMap(null);
 
-      if(Map.activeSelection != null){
-        Map.activeSelection.setMap(null);
-        newMarkerData.location = Map.activeSelection.data.location;
-        newMarkerData.data = Map.activeSelection.data;
+      if(Map.currentMarker.data){
+        newMarkerData.location = Map.currentMarker.data.location;
+        newMarkerData.data = Map.currentMarker.data;
       }else{
         newMarkerData.location = {lat: Map.currentMarker.position.lat(), lng: Map.currentMarker.position.lng()};
       }
-
+      
       markerDataArray.push(newMarkerData);
 
       database.ref("events").set(markerDataArray);
@@ -92,14 +88,14 @@ $(document).ready(function () {
   $('#search-submit').on('click', function(e){
     e.preventDefault();
     
-    var input = $('#location-search').val().trim();
-    $('#location-search').val('');
+    var input = $('#location-search');
+    var inputVal = input.val().trim();
     
-    if(input !== ""){
-      var places = new PlacesConstructor(Map); 
-      // stores result in a global variable
+    input.val('');
+    
+    if(inputVal !== ""){
 
-      places.search(input, outputResults);
+      Places.search(inputVal, outputResults);
 
       function outputResults(resultArray) {
 
@@ -107,8 +103,8 @@ $(document).ready(function () {
           placesMarkersArray.forEach(function (item) {
             item.setMap(null);
           });
-          placesMarkersArray = [];
         }
+        placesMarkersArray = [];
 
         if(resultArray.length == 1){
 
@@ -121,13 +117,14 @@ $(document).ready(function () {
 
             marker.addListener('click', function() {
 
-              Map.currentMarker.setMap(null);
-
-              if(Map.activeSelection){
-                Map.activeSelection.setAnimation(null);
+              if(!Map.currentMarker.data){
+                Map.currentMarker.setMap(null);
+              }else{
+                Map.currentMarker.setAnimation(null);
               }
-              marker.setAnimation(google.maps.Animation.BOUNCE);
-              Map.activeSelection = marker;
+
+              Map.currentMarker = marker;
+              Map.currentMarker.setAnimation(google.maps.Animation.BOUNCE);
 
             });
 
@@ -163,18 +160,12 @@ $(document).ready(function () {
 
   });
 
-  database.ref("events").once('value', function (snapshot) {
-    if(snapshot.val()){
-      markerDataArray = snapshot.val();
-    }
-  });
-
   database.ref("events").on('child_added', function (snapshot) {
-
-    // On child_added Events
 
     var elem = snapshot.val();
     var marker = Map.createMarker(elem.location, {drop: true}, elem.data, markerIcons.green);
+
+    markerDataArray.push(elem);
 
     marker.addListener('mouseover', function () {
 
@@ -205,7 +196,6 @@ $(document).ready(function () {
     });
 
     buildTableRow(elem);
-
     Map.setMarker(marker);
 
   });

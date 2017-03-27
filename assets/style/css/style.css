@@ -3,7 +3,7 @@
     height: 300px;
     margin-bottom:20px;
     /*position: relative;*/
-    perspective: 800px;
+    perspective: 1000px;
 }
 
 .front, .back{
@@ -28,7 +28,7 @@
 }
 
 #card .front {
-    background: red;
+    background: lightgray;
 }
 
 #card .back {
@@ -46,7 +46,7 @@
     /*margin: 0;*/
     /*margin-top:20px;*/
     /*margin-bottom:20px;*/
-    border:2px;
+    border: 2px;
     border-style:solid;
     border-color:mediumaquamarine;
 }
