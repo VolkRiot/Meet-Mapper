@@ -109,6 +109,7 @@ $(document).ready(function () {
         if(resultArray.length == 1){
 
           Map.relocateMapMarker(resultArray[0].location);
+          Map.map.setZoom(15);
 
         }else{
 
@@ -156,8 +157,11 @@ $(document).ready(function () {
           });
 
           Map.bounds.extend(Map.currentMarker.getPosition());
-
           Map.map.fitBounds(Map.bounds);
+
+          google.maps.event.addListenerOnce(Map.map, "idle", function() {
+            if (Map.map.getZoom() > 15) Map.map.setZoom(16);
+          });
 
         }
 
