@@ -24,7 +24,7 @@ $(document).ready(function () {
   var placesMarkersArray = [];
 
   var Map = new GMapInterface('map-container');
-  var Places = new PlacesConstructor(Map.map);
+  var Places = new PlacesConstructor(Map);
 
   Map.map.addListener('click', function(event) {
 
@@ -115,6 +115,8 @@ $(document).ready(function () {
           resultArray.forEach(function(place) {
             var marker = Map.createMarker(place.location, {drop: true}, place, markerIcons.purple);
 
+            Map.bounds.extend(marker.getPosition());
+
             marker.addListener('click', function() {
 
               if(!Map.currentMarker.data){
@@ -150,7 +152,12 @@ $(document).ready(function () {
 
             Map.setMarker(marker);
             placesMarkersArray.push(marker);
+
           });
+
+          Map.bounds.extend(Map.currentMarker.getPosition());
+
+          Map.map.fitBounds(Map.bounds);
 
         }
 
@@ -193,10 +200,58 @@ $(document).ready(function () {
         infowindow.close();
       });
 
+      // Build the card html and save to reference for best performance...????
+      var panel =
+          '<div class="card small">' +
+          '<div class="card-image waves-effect waves-block waves-light">' +
+          '<img class="responsive-img location-image activator" src="assets/style/images/office.jpg">' +
+          '</div>' +
+          '<div class="card-content">' +
+          '<span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>' +
+          '<p><a href="#">This is a link</a></p>' +
+      '</div>' +
+      '<div class="card-reveal">' +
+          '<span class="card-title grey-text text-darken-4">Card Title<i id="close-button" class="material-icons right">close</i></span>' +
+          '<p>Here is some more information about this product that is only revealed once clicked on.</p>' +
+      '</div>' +
+      '</div>';
+
+
+
+      // '<div class="card-reveal">' +
+      //     '<span class="card-title grey-text text-darken-4">Card Title<i id="close-button" class="material-icons right">close</i></span>' +
+      //     '</div>'
+
+
+      $('#info-card').empty();
+      $('#info-card').append($(panel));
+
+
+    });
+
+    marker.addListener('click', function () {
+
+      // Flip Cards with details on back.
+      $("#card").toggleClass("flipped");
+
+      function hideMap() {
+        $('#map-container').hide();
+      }
+
+      setTimeout(hideMap, 800);
+
+
     });
 
     buildTableRow(elem);
     Map.setMarker(marker);
+
+  });
+
+  $("#info-card").on('click', '#close-button', function () {
+    console.log("Click detected");
+    $('#map-container').show();
+    $("#card").toggleClass("flipped");
 
   });
 

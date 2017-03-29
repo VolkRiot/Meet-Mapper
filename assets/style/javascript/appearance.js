@@ -29,7 +29,6 @@ $("#upcoming-popout").on("click", function() {
 	$("#add-eventform").hide();
 	$("#upcoming-events").fadeIn(1000);
   $("body").animate({ scrollTop: $(document).height() }, "slow");
-  
 
 });
 

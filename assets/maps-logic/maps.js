@@ -20,6 +20,7 @@ GMapInterface.prototype.initMap = function(contId) {
   this.map = new google.maps.Map(document.getElementById(contId), this.mapOptions);
   this.currentMarker = this.createMarker(this.startLoc, {bounce: true});
   this.setMarker(this.currentMarker);
+  this.bounds = new google.maps.LatLngBounds();
 
 };
 
@@ -83,6 +84,7 @@ GMapInterface.prototype.queryUserLocation = function () {
 GMapInterface.prototype.setMapCenter = function (position) {
 
   this.map.setCenter(position);
+  this.bounds = new google.maps.LatLngBounds();
 
 };
 
