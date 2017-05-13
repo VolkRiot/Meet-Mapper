@@ -1,29 +1,35 @@
 //Constructor
 function PlacesConstructor(gMap){
-  this.PlacesInit(gMap.map);
-  this.getPosition(gMap);
+  this.currentMap = gMap.map;
+  this.centerPoint = {lat: this.currentMap.center.lat(), lng: this.currentMap.center.lng()};
+  this.PlacesInit();
+  this.getPosition();
 }
 
 // Initialize places Service
-PlacesConstructor.prototype.PlacesInit = function(myMap){
-	this.placeService = new google.maps.places.PlacesService(myMap);
+PlacesConstructor.prototype.PlacesInit = function(){
+	this.placeService = new google.maps.places.PlacesService(this.currentMap);
 };
 
 // Get Coordinates
-PlacesConstructor.prototype.getPosition = function(myMap){
+PlacesConstructor.prototype.getPosition = function(){
 
-  var currentPosition = {
-    lat: myMap.currentMarker.position.lat(),
-    lng: myMap.currentMarker.position.lng()
+  this.centerPoint = {
+    lat: this.currentMap.center.lat(),
+    lng: this.currentMap.center.lng()
   };
-  this.startPoint = currentPosition;
+
 };
 
 // Search Function
 PlacesConstructor.prototype.search = function(searchInput, callback){
+
+  // Refresh Coordinates
+  this.getPosition();
+
   // Search obj
   var request = {
-    location:  this.startPoint,
+    location:  this.centerPoint,
     radius: '500',
     query: searchInput
   };
@@ -36,6 +42,7 @@ PlacesConstructor.prototype.search = function(searchInput, callback){
   
   // Function that saves the result in an array
   function getResult(results, status){ 
+
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < results.length; i++) {
 

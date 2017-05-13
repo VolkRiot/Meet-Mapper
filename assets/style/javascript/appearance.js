@@ -8,7 +8,7 @@ $(function() {
 
 // timepicker function
  $('.timepicker').pickatime({
-    autoclose: false,
+    autoclose: true,
     twelvehour: true,
     default: '12:00:00'
   });
@@ -18,17 +18,17 @@ $(function() {
 
 $("#add-popout").on("click", function() {
 
-	$("#upcoming-events").hide()
-	$("#add-eventform").fadeIn(1000)
-
+	$("#upcoming-events").hide();
+	$("#add-eventform").fadeIn(1000);
+  $("body").animate({ scrollTop: $(document).height() }, "slow");
 
 });
 
 $("#upcoming-popout").on("click", function() {
 
-	$("#add-eventform").hide()
-	$("#upcoming-events").fadeIn(1000)
-  
+	$("#add-eventform").hide();
+	$("#upcoming-events").fadeIn(1000);
+  $("body").animate({ scrollTop: $(document).height() }, "slow");
 
 });
 

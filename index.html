@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/style/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/style/images/favicon-32x32.png">
  <!--  Reset CSS -->
   <link rel="stylesheet" type="text/css" href="assets/style/css/reset.css">
   <!-- Materialize Link -->
@@ -13,12 +13,13 @@
   <!-- Project stylesheet-->
   <link rel="stylesheet" type="text/css" href="assets/style/css/style.css">
   <link rel="stylesheet" type="text/css" href="assets/style/css/materialize.clockpicker.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 <body>
 
 
-        <div class="row" id="header">
+        <div class="row z-depth-1" id="header">
          <div class="col s12">
            <h3 id="header-text">
             <img src="assets\style\images\location-icon.png" alt="Mapski" style="width:50px; height:50px;">
@@ -35,9 +36,10 @@
 
            <form id="search-form" class="col s12">
             <div class="input-field col s2 offset-s4">
-             <label id="search-label" for="location-search">Search Places:</label>
-             <input class="form-control" id="location-search" type="text">
+             <input class="form-control" placeholder="Search" id="location-search" type="text">
             </div>
+
+             <!--Rework this submit buttons into something better.-->
             <button class="waves-effect waves-light btn" type="submit" id="search-submit">Submit</button>
            </form>
         
@@ -49,9 +51,27 @@
     <div class="col s10">
 
 
-     <div id="map-container">
-        <!--Map will go here.-->
-      </div>
+      <section class="container" id="map-transform-container">
+        <div id="card">
+          <figure class="front z-depth-4">
+            <div id="map-container">
+              <!--Map will go here.-->
+            </div>
+          </figure>
+          <figure class="back z-depth-4" id="info-card">
+            <!--Info window for event can go here-->
+          </figure>
+        </div>
+      </section>
+
+      <!--Notes for improvements here-->
+
+      <!--$("#search-submit").click(function(){-->
+      <!--$("#card").toggleClass("flipped");-->
+      <!--});-->
+
+      <!--<p class="flow-text">I am Flow Text</p>-->
+
     
       <div class="row" id="popout-buttons">
         <div class="col s6">
@@ -85,7 +105,7 @@
         <div class="row">
           <div class="input-field col s6">
             <input id="event-start" type="time" class="timepicker event-data">
-            <label type="time" class="timepicker" for="event-start">Start Time:</label>
+            <label class="timepicker" for="event-start">Start Time:</label>
           </div>
           <div class="input-field col s6">
             <input id="event-end" type="time" class="timepicker event-data">
@@ -95,7 +115,7 @@
         
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="event-description" class="materialize-textarea event-data"></textarea>
+            <textarea id="event-description" class="materialize-textarea event-data" data-length="120"></textarea>
             <label for="event-description">Description:</label>
           </div>
         </div>
@@ -142,8 +162,6 @@
 </script>
 <script src="assets/places-logic/places.js"></script>
 <!--End Places API-->
-
-
 
   <!--Maps API Object-->
   <script src="assets/maps-logic/maps.js"></script>
