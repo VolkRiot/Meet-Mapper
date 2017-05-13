@@ -71,7 +71,7 @@
     max-height:200px;
     color:#ffffff;
     padding-bottom:20px;
-    margin-bottom:20px;   
+    margin-bottom:20px;
 }
 
 #header-text {
@@ -86,10 +86,6 @@
 }
 
 /* Media Query */
-
+/* Unused for now */
 @media screen and (max-width: 768px) {}
-
-
 @media screen and (max-width: 640px) {}
-
-
