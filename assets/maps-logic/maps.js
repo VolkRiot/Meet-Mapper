@@ -8,9 +8,7 @@ function GMapInterface(container) {
     streetViewControl: false,
     mapTypeControl: false
   };
-  this.map;
-  this.currentMarker;
-  this.activeSelection;
+
   this.initMap(container);
   this.queryUserLocation();
 }
