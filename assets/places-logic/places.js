@@ -1,4 +1,3 @@
-//Constructor
 function PlacesConstructor(gMap){
   this.currentMap = gMap.map;
   this.centerPoint = {lat: this.currentMap.center.lat(), lng: this.currentMap.center.lng()};
@@ -41,12 +40,14 @@ PlacesConstructor.prototype.search = function(searchInput, callback){
   var searchResult = [];
   
   // Function that saves the result in an array
-  function getResult(results, status){ 
+  function getResult(results, status){
 
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
+    console.log('First result object is ', results[0]);
+
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < results.length; i++) {
 
-        if(i == 5 ){
+        if(i === 5) {
           break;
         }
 
