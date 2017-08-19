@@ -62,6 +62,7 @@ GMapInterface.prototype.queryUserLocation = function () {
   if (navigator.geolocation) {
 
     navigator.geolocation.getCurrentPosition(function(position) {
+
       self.startLoc = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
@@ -70,11 +71,29 @@ GMapInterface.prototype.queryUserLocation = function () {
       // Successfully found map
       self.relocateMapMarker(self.startLoc);
 
-    }, function() {
+    }, function(error) {
+      var errMessage = '';
 
-      // TODO: Add a slide out saying location could not be located
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          errMessage += 'Geolocation permission denied. ';
+          break;
+        case error.POSITION_UNAVAILABLE:
+          errMessage += 'Position unavailable. ';
+          break;
+        case error.TIMEOUT:
+          errMessage += 'Request to get location timed out. ';
+          break;
+        default:
+          errMessage += 'An unknown error occurred. ';
+      }
+
+      Materialize.toast(errMessage + 'Defaulting location to downtown San Francisco', 3000);
 
     }, {timeout:7000});
+
+  } else {
+    Materialize.toast('GeoLocation is not supported by your browser', 3000);
   }
 
 };
