@@ -212,7 +212,7 @@ $(document).ready(function () {
 
               '<div class="row">' +
                 '<div class="col s5">' +
-                '<img class="materialboxed" height="300" width="350" src=' + (elem.data ? elem.data.photoLrg : 'assets\\style\\images\\location-map-flat.png') + '>' +
+                '<img class="materialboxed location-image" src=' + (elem.data ? elem.data.photoLrg : 'assets\\style\\images\\location-map-flat.png') + '>' +
                 '</div>' +
                 '<div class="col s7">' +
                   '<div class="row">' +
