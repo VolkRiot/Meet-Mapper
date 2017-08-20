@@ -42,8 +42,6 @@ PlacesConstructor.prototype.search = function(searchInput, callback){
   // Function that saves the result in an array
   function getResult(results, status){
 
-    console.log('First result object is ', results[0]);
-
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < results.length; i++) {
 
@@ -63,6 +61,7 @@ PlacesConstructor.prototype.search = function(searchInput, callback){
         if(results[i].photos){
 
           myObj.photo = results[i].photos[0].getUrl({'maxWidth': 50, 'maxHeight': 50});
+          myObj.photoLrg = results[i].photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300});
 
         }
 

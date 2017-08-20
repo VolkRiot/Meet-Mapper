@@ -204,10 +204,14 @@ $(document).ready(function () {
         infowindow.close();
       });
 
+      console.log('Elem ', elem);
+
       var panel =
           '<div class="card small">' +
             '<div class="card-content">' +
-              '<span class="card-title grey-text text-darken-4">Card Title<i id="close-button" class="material-icons right">close</i></span>' +
+              '<span class="card-title grey-text text-darken-4">' + elem.name + '<i id="close-button" class="material-icons right">close</i></span>' +
+
+              '<img class="materialboxed" height="300" width="350" src=' + (elem.data ? elem.data.photoLrg : 'assets\\style\\images\\location-map-flat.png') + '>' +
             '</div>' +
       '<div class="card-reveal">' +
           '<span class="card-title grey-text text-darken-4">Card Title<i id="close-button" class="material-icons right">close</i></span>' +
