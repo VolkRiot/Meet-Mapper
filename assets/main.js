@@ -204,9 +204,7 @@ $(document).ready(function () {
       marker.addListener('mouseout', function () {
         infowindow.close();
       });
-
-      console.log('Elem ', elem);
-
+      
       var panel =
           '<div class="card small">' +
             '<div class="card-content">' +
@@ -217,8 +215,20 @@ $(document).ready(function () {
                 '<img class="materialboxed" height="300" width="350" src=' + (elem.data ? elem.data.photoLrg : 'assets\\style\\images\\location-map-flat.png') + '>' +
                 '</div>' +
                 '<div class="col s7">' +
+                  '<div class="row">' +
+                    '<div class="col s6">' +
+                      '<p class="flow-text" >Start Time: '+ elem.startTime +'</p>' +
+                    '</div>' +
+                    '<div class="col s6">' +
+                      '<p class="flow-text" >End Time: '+ elem.endTime +'</p>' +
+                    '</div>' +
+                  '</div>' +
 
-                  '<p>Testing the text for this column area as it might be represented</p>' +
+                  '<div class="row">' +
+                    '<div class="col s12">' +
+                      '<p class="flow-text">'+ (elem.description ? elem.description : 'No event description provided') +'</p>' +
+                    '</div>' +
+                  '</div>' +
           
                 '</div>' +
               '</div>' +

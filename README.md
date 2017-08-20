@@ -1,17 +1,14 @@
 # Meet-Mapper
 
 ## Contributors
-- Derek Siu
-- Flavio Martins
-- Misha Metrikin
+- Derek Siu :dragon:
+- Flavio Martins :japanese_ogre:
+- Misha Metrikin :godmode:
 
 ## Proposed Improvements
 
-- Fix the panel with meta-data
-- ~~Zoom out to elements~~
-- ~~Search improvement/ dropdown nearby cities~~
 - Move to marker or show card on hover/click of data row
 - (Optional) More subtle button styling.
-- Test response to large number of inputs using Selenium test
+- Create tests runner for CircleCI (Karma, Chai, Mocha)
 - User authentication 
 - Twillio integration / or email to share the events created
