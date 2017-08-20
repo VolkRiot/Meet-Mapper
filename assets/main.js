@@ -211,7 +211,17 @@ $(document).ready(function () {
             '<div class="card-content">' +
               '<span class="card-title grey-text text-darken-4">' + elem.name + '<i id="close-button" class="material-icons right">close</i></span>' +
 
-              '<img class="materialboxed" height="300" width="350" src=' + (elem.data ? elem.data.photoLrg : 'assets\\style\\images\\location-map-flat.png') + '>' +
+              '<div class="row">' +
+                '<div class="col s5">' +
+                '<img class="materialboxed" height="300" width="350" src=' + (elem.data ? elem.data.photoLrg : 'assets\\style\\images\\location-map-flat.png') + '>' +
+                '</div>' +
+                '<div class="col s7">' +
+
+                  '<p>Testing the text for this column area as it might be represented</p>' +
+          
+                '</div>' +
+              '</div>' +
+
             '</div>' +
       '<div class="card-reveal">' +
           '<span class="card-title grey-text text-darken-4">Card Title<i id="close-button" class="material-icons right">close</i></span>' +
