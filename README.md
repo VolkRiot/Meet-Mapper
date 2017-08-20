@@ -6,7 +6,7 @@
 - Misha Metrikin :godmode:
 
 ## Live App
-![Mapski](https://thumbs.gfycat.com/VioletWhirlwindAlbacoretuna-size_restricted.gif)
+![Mapski](https://giant.gfycat.com/VioletWhirlwindAlbacoretuna.gif)
 
 ## Proposed Improvements
 
