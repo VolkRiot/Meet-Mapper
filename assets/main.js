@@ -50,6 +50,7 @@ $(document).ready(function () {
     newMarkerData.date = $('#event-date').val().trim();
     newMarkerData.startTime = $('#event-start').val().trim();
     newMarkerData.endTime = $('#event-end').val().trim();
+    newMarkerData.description = $('#event-description').val().trim();
 
     if(newMarkerData.name && newMarkerData.date && newMarkerData.startTime && newMarkerData.endTime){
       formComplete = true;
@@ -106,7 +107,7 @@ $(document).ready(function () {
         }
         placesMarkersArray = [];
 
-        if(resultArray.length == 1){
+        if(resultArray.length === 1){
 
           Map.relocateMapMarker(resultArray[0].location);
           Map.map.setZoom(15);
