@@ -65,6 +65,9 @@
 	text-align:center;
 }
 
+#inner-back-card {
+    margin-left: 0;
+}
 
 #header {
     background-color:#4db6ac;

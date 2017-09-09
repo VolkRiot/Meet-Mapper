@@ -76,7 +76,7 @@ $(document).ready(function () {
       }else{
         newMarkerData.location = {lat: Map.currentMarker.position.lat(), lng: Map.currentMarker.position.lng()};
       }
-      
+
       markerDataArray.push(newMarkerData);
 
       database.ref("events").set(markerDataArray);
@@ -88,12 +88,12 @@ $(document).ready(function () {
   // Search Input Click Event
   $('#search-submit').on('click', function(e){
     e.preventDefault();
-    
+
     var input = $('#location-search');
     var inputVal = input.val().trim();
-    
+
     input.val('');
-    
+
     if(inputVal !== ""){
 
       Places.search(inputVal, outputResults);
@@ -167,7 +167,7 @@ $(document).ready(function () {
         }
 
       }
-      
+
     }
 
   });
@@ -204,12 +204,12 @@ $(document).ready(function () {
       marker.addListener('mouseout', function () {
         infowindow.close();
       });
-      
+
       var panel =
           '<div class="card small">' +
             '<div class="card-content">' +
               '<span class="card-title grey-text text-darken-4">' + elem.name + '<i id="close-button" class="material-icons right">close</i></span>' +
-
+              '<div id="inner-back-card" class="container">' +
               '<div class="row">' +
                 '<div class="col s5">' +
                 '<img class="materialboxed location-image" src=' + (elem.data && elem.data.photoLrg ? elem.data.photoLrg : 'assets\\style\\images\\location-map-flat.png') + '>' +
@@ -229,8 +229,9 @@ $(document).ready(function () {
                       '<p class="flow-text">'+ (elem.description ? elem.description : 'No event description provided') +'</p>' +
                     '</div>' +
                   '</div>' +
-          
+
                 '</div>' +
+              '</div>' +
               '</div>' +
 
             '</div>' +
